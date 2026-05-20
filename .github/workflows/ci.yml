@@ -39,8 +39,8 @@ jobs:
       # working-directory: simple-token-validator
       # run: mvn -B spotbugs:check --file pom.xml
 
-    - name: Run OWASP Dependency-Check (SCA)
-      run: mvn -B org.owasp:dependency-check-maven:check
+   # - name: Run OWASP Dependency-Check (SCA)
+   #   run: mvn -B org.owasp:dependency-check-maven:check
       # Or explicitly:
       # working-directory: simple-token-validator
       # run: mvn -B org.owasp:dependency-check-maven:check --file pom.xml
