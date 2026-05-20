@@ -10,8 +10,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <spotbugs.version>4.8.6.2</spotbugs.version>
         <findsecbugs.plugin.version>1.13.0</findsecbugs.plugin.version>
@@ -51,7 +51,7 @@
                 </configuration>
             </plugin>
 
-                  
+
             <!-- SpotBugs with FindSecurityBugs for SAST -->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
@@ -61,14 +61,13 @@
                     <effort>Max</effort>
                     <threshold>Low</threshold>
                     <!--
-                        CHANGE THIS LINE:
-                        From: <failOnError>true</failOnError>
-                        To:   <failOnError>false</failOnError>
+                    CHANGE THIS LINE:
+                    From: <failOnError>true</failOnError>
+                    To:   <failOnError>false</failOnError>
                     -->
                     <failOnError>false</failOnError>
                     <xmlOutput>true</xmlOutput> <!-- Ensure XML output is explicitly enabled -->
                     <xmlOutputDirectory>target</xmlOutputDirectory> <!-- Default, but good to be explicit -->
-                    <onlyAnalyze>com.example.*</onlyAnalyze>
                     <plugins>
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
@@ -76,20 +75,7 @@
                             <version>${findsecbugs.plugin.version}</version>
                         </plugin>
                     </plugins>
-
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm</artifactId>
-                        <version>9.7.1</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.ow2.asm</groupId>
-                        <artifactId>asm-tree</artifactId>
-                        <version>9.7.1</version>
-                    </dependency>
-                </dependencies>
                 <executions>
                     <execution>
                         <goals>
@@ -99,7 +85,7 @@
                 </executions>
             </plugin>
 
-    
+
             <!-- OWASP Dependency-Check for vulnerable dependencies (SCA) -->
             <plugin>
                 <groupId>org.owasp</groupId>
@@ -108,15 +94,15 @@
                 <configuration>
                     <failBuildOnCVSS>7</failBuildOnCVSS> <!-- Fail if CVSS score >= 7 -->
                     <!-- <cveValidForHours>12</cveValidForHours> ensure NVD is updated -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    </project>
